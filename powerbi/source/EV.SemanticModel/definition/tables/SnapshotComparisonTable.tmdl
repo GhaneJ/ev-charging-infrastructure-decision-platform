@@ -1,0 +1,258 @@
+table SnapshotComparisonTable
+	lineageTag: 1eba7311-0e3f-4412-8500-f7d7f9aabd56
+
+	measure 'Previous Rank' =
+			
+			MIN(SnapshotComparisonTable[previous_rank])
+		formatString: 0
+		lineageTag: 798afdba-5742-4dfc-8470-cf2264f1f90b
+
+	measure 'Rank Change' =
+			
+			VAR _PreviousRank = [Previous Rank]
+			VAR _CurrentRank = [Current Rank]
+			RETURN
+			    IF(
+			        ISBLANK(_PreviousRank) || ISBLANK(_CurrentRank),
+			        BLANK(),
+			        _PreviousRank - _CurrentRank
+			    )
+		formatString: 0
+		lineageTag: b5a55593-f78c-469f-92ce-880f892e5cb0
+
+	measure 'Previous Decision Score' =
+			
+			MAX(SnapshotComparisonTable[previous_decision_score])
+		lineageTag: 0a0b1bf3-799a-49f9-a693-f8abf656a7f3
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Decision Score Change' =
+			
+			MAX(SnapshotComparisonTable[decision_score_change])
+		lineageTag: f5cc112e-44cd-4ff0-970a-efbe9358e079
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Growth Change' =
+			
+			MAX(SnapshotComparisonTable[growth_change])
+		formatString: 0
+		lineageTag: bd0c84ba-4141-4e00-af16-b21217e22622
+
+	measure 'Electricity Price Change' =
+			
+			MAX(SnapshotComparisonTable[electricity_price_change])
+		lineageTag: a88f814b-1d07-4da3-94df-c139662f2dc9
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'EV Registrations Change' =
+			
+			MAX(SnapshotComparisonTable[ev_registrations_12m_change])
+		formatString: 0
+		lineageTag: 8ce63345-041e-422b-b1cf-021265fd00cc
+
+	column municipality
+		dataType: string
+		lineageTag: 5b6e4a4a-4e40-47ba-ba8e-b3513d285192
+		summarizeBy: none
+		sourceColumn: municipality
+
+		annotation SummarizationSetBy = Automatic
+
+	column country
+		dataType: string
+		lineageTag: da25fefd-cfc3-4c52-8bbc-7d7ba42d1d8a
+		summarizeBy: none
+		sourceColumn: country
+
+		annotation SummarizationSetBy = Automatic
+
+	column map_location
+		dataType: string
+		lineageTag: 1293cf2e-d6e0-4967-bbe2-7dd014fe3f9c
+		summarizeBy: none
+		sourceColumn: map_location
+
+		annotation SummarizationSetBy = Automatic
+
+	column price_area
+		dataType: string
+		lineageTag: 700cc9c8-a6e7-4a0a-ba30-beca5fd1243d
+		summarizeBy: none
+		sourceColumn: price_area
+
+		annotation SummarizationSetBy = Automatic
+
+	column membership_status
+		dataType: string
+		lineageTag: 7bc27946-3cfa-4f54-b191-0aa7ff7ad7d4
+		summarizeBy: none
+		sourceColumn: membership_status
+
+		annotation SummarizationSetBy = Automatic
+
+	column previous_rank
+		dataType: int64
+		formatString: 0
+		lineageTag: 93b634ed-9a97-4953-91d2-fe717c4683d1
+		summarizeBy: sum
+		sourceColumn: previous_rank
+
+		annotation SummarizationSetBy = Automatic
+
+	column current_rank
+		dataType: int64
+		formatString: 0
+		lineageTag: e2d50865-2769-4b4b-bc52-d25cc7d5a414
+		summarizeBy: sum
+		sourceColumn: current_rank
+
+		annotation SummarizationSetBy = Automatic
+
+	column rank_change
+		dataType: int64
+		formatString: 0
+		lineageTag: d58ad1ce-cd66-4e4f-9f39-681935f14716
+		summarizeBy: sum
+		sourceColumn: rank_change
+
+		annotation SummarizationSetBy = Automatic
+
+	column rank_direction
+		dataType: string
+		lineageTag: 27a30d71-9103-439d-b77f-1e61cd1bace4
+		summarizeBy: none
+		sourceColumn: rank_direction
+
+		annotation SummarizationSetBy = Automatic
+
+	column previous_decision_score
+		dataType: double
+		lineageTag: 065edae6-eefd-48bf-b705-187cd84678a9
+		summarizeBy: sum
+		sourceColumn: previous_decision_score
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column current_decision_score
+		dataType: double
+		lineageTag: eda7dd37-827a-4037-b4b6-701f1d99c990
+		summarizeBy: sum
+		sourceColumn: current_decision_score
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column decision_score_change
+		dataType: double
+		lineageTag: 2d46839f-4ed1-4da7-9229-07a7e9c442ae
+		summarizeBy: sum
+		sourceColumn: decision_score_change
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column previous_ev_registrations_12m
+		dataType: int64
+		formatString: 0
+		lineageTag: 46b6d8bb-9552-459f-82ea-71186dc274c8
+		summarizeBy: sum
+		sourceColumn: previous_ev_registrations_12m
+
+		annotation SummarizationSetBy = Automatic
+
+	column current_ev_registrations_12m
+		dataType: int64
+		formatString: 0
+		lineageTag: ca0c99be-04d3-448e-8ba2-caaf537537ed
+		summarizeBy: sum
+		sourceColumn: current_ev_registrations_12m
+
+		annotation SummarizationSetBy = Automatic
+
+	column ev_registrations_12m_change
+		dataType: int64
+		formatString: 0
+		lineageTag: 6fb8634b-86f0-41c0-9d28-69641262a068
+		summarizeBy: sum
+		sourceColumn: ev_registrations_12m_change
+
+		annotation SummarizationSetBy = Automatic
+
+	column previous_ev_registration_change_6m
+		dataType: int64
+		formatString: 0
+		lineageTag: 9a223785-9683-4fe2-b562-e5f2f0ee343f
+		summarizeBy: sum
+		sourceColumn: previous_ev_registration_change_6m
+
+		annotation SummarizationSetBy = Automatic
+
+	column current_ev_registration_change_6m
+		dataType: int64
+		formatString: 0
+		lineageTag: b4204ee6-513a-46e0-aafc-8d9502753a85
+		summarizeBy: sum
+		sourceColumn: current_ev_registration_change_6m
+
+		annotation SummarizationSetBy = Automatic
+
+	column growth_change
+		dataType: int64
+		formatString: 0
+		lineageTag: b3affea1-7877-423a-a974-62742968c3cb
+		summarizeBy: sum
+		sourceColumn: growth_change
+
+		annotation SummarizationSetBy = Automatic
+
+	column previous_avg_sek_per_kwh
+		dataType: double
+		lineageTag: b9d3a888-35e1-4717-9cff-7dbac1982e73
+		summarizeBy: sum
+		sourceColumn: previous_avg_sek_per_kwh
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column current_avg_sek_per_kwh
+		dataType: double
+		lineageTag: 26673e61-3cdd-4601-932e-f20b3c3a2e4f
+		summarizeBy: sum
+		sourceColumn: current_avg_sek_per_kwh
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column electricity_price_change
+		dataType: double
+		lineageTag: 5baf4f98-63b6-4dc0-b938-b2038fd95651
+		summarizeBy: sum
+		sourceColumn: electricity_price_change
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition SnapshotComparisonTable = m
+		mode: import
+		source =
+				let
+				    Source = Excel.Workbook(File.Contents("C:\PATH\TO\EV_Charging_Gold_Snapshots_PowerBI.xlsx"), null, true),
+				    SnapshotComparisonTable_Table = Source{[Item="SnapshotComparisonTable",Kind="Table"]}[Data],
+				    #"Changed Type" = Table.TransformColumnTypes(SnapshotComparisonTable_Table,{{"municipality", type text}, {"country", type text}, {"map_location", type text}, {"price_area", type text}, {"membership_status", type text}, {"previous_rank", Int64.Type}, {"current_rank", Int64.Type}, {"rank_change", Int64.Type}, {"rank_direction", type text}, {"previous_decision_score", type number}, {"current_decision_score", type number}, {"decision_score_change", type number}, {"previous_ev_registrations_12m", Int64.Type}, {"current_ev_registrations_12m", Int64.Type}, {"ev_registrations_12m_change", Int64.Type}, {"previous_ev_registration_change_6m", Int64.Type}, {"current_ev_registration_change_6m", Int64.Type}, {"growth_change", Int64.Type}, {"previous_avg_sek_per_kwh", type number}, {"current_avg_sek_per_kwh", type number}, {"electricity_price_change", type number}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

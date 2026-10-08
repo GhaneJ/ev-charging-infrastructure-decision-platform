@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.13.0/schema.json",
+  "name": "p3t1",
+  "position": {
+    "x": 80,
+    "y": 52,
+    "z": 8000,
+    "height": 28,
+    "width": 900,
+    "tabOrder": 8000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "SWEDEN EV INFRASTRUCTURE  /  DEMAND × COST",
+                    "textStyle": {
+                      "fontSize": "12pt",
+                      "color": "#58C1C8",
+                      "fontWeight": "bold"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

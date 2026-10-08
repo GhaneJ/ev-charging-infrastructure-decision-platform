@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.13.0/schema.json",
+  "name": "p1t2",
+  "position": {
+    "x": 100,
+    "y": 88,
+    "z": 6000,
+    "height": 58,
+    "width": 1080,
+    "tabOrder": 6000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Fast-charging expansion · Command View",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontSize": "33pt",
+                      "color": "#f7f2e8"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

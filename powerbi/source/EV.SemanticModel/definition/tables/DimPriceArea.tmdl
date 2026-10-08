@@ -1,0 +1,27 @@
+table DimPriceArea
+	lineageTag: 90fc6b70-8f99-4ace-b4af-d95441e94e43
+
+	column price_area
+		lineageTag: d685fc9b-bf84-4755-9648-439ea99e4b5e
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [price_area]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DimPriceArea = calculated
+		mode: import
+		source =
+				
+				DATATABLE(
+				    "price_area", STRING,
+				    {
+				        {"SE1"},
+				        {"SE2"},
+				        {"SE3"},
+				        {"SE4"}
+				    }
+				)
+
+	annotation PBI_Id = aebcb92d7b8147c78acdafe03dc41c07
+

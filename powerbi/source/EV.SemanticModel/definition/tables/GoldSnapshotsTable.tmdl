@@ -1,0 +1,604 @@
+table GoldSnapshotsTable
+	lineageTag: e943136b-51de-4395-a8c1-638c55ce6535
+
+	measure 'Show In Top N' =
+			
+			IF(
+			    NOT ISBLANK([Current Rank]) && [Current Rank] <= [Selected Top N],
+			    1,
+			    0
+			)
+		formatString: 0
+		lineageTag: e1dc0b07-2584-498c-b0fb-13011b591b13
+
+	measure 'Current Rank' =
+			
+			CALCULATE(
+			    MIN(GoldSnapshotsTable[rank]),
+			    SnapshotMetadataTable[is_current] = TRUE()
+			)
+		formatString: 0
+		lineageTag: 2c95c7ad-371d-4653-943e-56a435c11249
+
+	measure 'Current Decision Score' =
+			
+			CALCULATE(
+			    MAX(GoldSnapshotsTable[decision_score]),
+			    SnapshotMetadataTable[is_current] = TRUE()
+			)
+		formatString: 0.0000
+		lineageTag: ab9e81b4-cf48-4f8b-bfd0-cea48f7abd4d
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Current EV Registrations 12M' =
+			
+			CALCULATE(
+			    MAX(GoldSnapshotsTable[ev_registrations_12m]),
+			    SnapshotMetadataTable[is_current] = TRUE()
+			)
+		formatString: 0
+		lineageTag: 4507cfe4-9230-404a-8d18-c740079b293a
+
+	measure 'Current EV Growth 6M' =
+			
+			CALCULATE(
+			    MAX(GoldSnapshotsTable[ev_registration_change_6m]),
+			    SnapshotMetadataTable[is_current] = TRUE()
+			)
+		formatString: 0
+		lineageTag: 5c6a44a0-afe6-4663-b262-3e043dc5477e
+
+	measure 'Current Electricity Price' =
+			
+			CALCULATE(
+			    MAX(GoldSnapshotsTable[avg_sek_per_kwh]),
+			    SnapshotMetadataTable[is_current] = TRUE()
+			)
+		formatString: 0.0000
+		lineageTag: 901f9f14-0b94-4c1a-8f47-4971ae969d60
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Current EV Volume Score' =
+			
+			CALCULATE(
+			    MAX(GoldSnapshotsTable[ev_volume_score]),
+			    SnapshotMetadataTable[is_current] = TRUE()
+			)
+		formatString: 0.0000
+		lineageTag: c23339f9-933b-44b3-a7d5-c0ae61e5266a
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Current EV Growth Score' =
+			
+			CALCULATE(
+			    MAX(GoldSnapshotsTable[ev_growth_score]),
+			    SnapshotMetadataTable[is_current] = TRUE()
+			)
+		formatString: 0.0000
+		lineageTag: 69572807-f901-4f09-b922-dea0121fc508
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Current Electricity Price Score' =
+			
+			CALCULATE(
+			    MAX(GoldSnapshotsTable[electricity_price_score]),
+			    SnapshotMetadataTable[is_current] = TRUE()
+			)
+		formatString: 0.0000
+		lineageTag: 59c75e58-af67-4506-a678-b050fda7b9ab
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Selected Municipality' = SELECTEDVALUE(DimMunicipality[municipality], "Select a municipality")
+		lineageTag: 9f4cc903-baf2-4f11-b747-0fe676105201
+
+	measure 'Selected Rank' = IF(HASONEVALUE(DimMunicipality[municipality]), [Current Rank], BLANK())
+		formatString: 0
+		lineageTag: 9f4cc903-baf2-4f11-b747-0fe676105202
+
+	measure 'Selected Decision Score' = IF(HASONEVALUE(DimMunicipality[municipality]), [Current Decision Score], BLANK())
+		formatString: 0.0000
+		lineageTag: 9f4cc903-baf2-4f11-b747-0fe676105203
+
+	measure 'Selected EV Registrations 12M' = IF(HASONEVALUE(DimMunicipality[municipality]), [Current EV Registrations 12M], BLANK())
+		formatString: 0
+		lineageTag: 9f4cc903-baf2-4f11-b747-0fe676105204
+
+	measure 'Selected EV Growth 6M' = IF(HASONEVALUE(DimMunicipality[municipality]), [Current EV Growth 6M], BLANK())
+		formatString: 0
+		lineageTag: 9f4cc903-baf2-4f11-b747-0fe676105205
+
+	measure 'Selected Electricity Price' = IF(HASONEVALUE(DimMunicipality[municipality]), [Current Electricity Price], BLANK())
+		formatString: 0.0000
+		lineageTag: 9f4cc903-baf2-4f11-b747-0fe676105206
+
+	measure 'Snapshot View Rank' = VAR _Seq = SELECTEDVALUE(SnapshotMetadataTable[snapshot_sequence], 2) RETURN CALCULATE(MIN(GoldSnapshotsTable[rank]), REMOVEFILTERS(SnapshotMetadataTable), TREATAS({_Seq}, SnapshotMetadataTable[snapshot_sequence]))
+		formatString: 0
+		lineageTag: 12345678-1234-4a9b-8abc-123456789101
+
+	measure 'Snapshot View Decision Score' = VAR _Seq = SELECTEDVALUE(SnapshotMetadataTable[snapshot_sequence], 2) RETURN CALCULATE(MAX(GoldSnapshotsTable[decision_score]), REMOVEFILTERS(SnapshotMetadataTable), TREATAS({_Seq}, SnapshotMetadataTable[snapshot_sequence]))
+		formatString: 0.0000
+		lineageTag: 12345678-1234-4a9b-8abc-123456789102
+
+	measure 'Snapshot View EV Registrations 12M' = VAR _Seq = SELECTEDVALUE(SnapshotMetadataTable[snapshot_sequence], 2) RETURN CALCULATE(MAX(GoldSnapshotsTable[ev_registrations_12m]), REMOVEFILTERS(SnapshotMetadataTable), TREATAS({_Seq}, SnapshotMetadataTable[snapshot_sequence]))
+		formatString: 0
+		lineageTag: 12345678-1234-4a9b-8abc-123456789103
+
+	measure 'Snapshot View EV Growth 6M' = VAR _Seq = SELECTEDVALUE(SnapshotMetadataTable[snapshot_sequence], 2) RETURN CALCULATE(MAX(GoldSnapshotsTable[ev_registration_change_6m]), REMOVEFILTERS(SnapshotMetadataTable), TREATAS({_Seq}, SnapshotMetadataTable[snapshot_sequence]))
+		formatString: 0
+		lineageTag: 12345678-1234-4a9b-8abc-123456789104
+
+	measure 'Snapshot View Show In Top N' = IF(NOT ISBLANK([Snapshot View Rank]) && [Snapshot View Rank] <= [Selected Top N], 1, 0)
+		formatString: 0
+		lineageTag: 12345678-1234-4a9b-8abc-123456789105
+
+	measure 'Snapshot View Decision Score Top N' = IF([Snapshot View Show In Top N] = 1, [Snapshot View Decision Score], BLANK())
+		formatString: 0.0000
+		lineageTag: 12345678-1234-4a9b-8abc-123456789106
+
+	measure 'Snapshot View Top Candidate' = VAR _Top = TOPN(1, FILTER(VALUES(DimMunicipality[municipality]), [Snapshot View Show In Top N] = 1), [Snapshot View Rank], ASC, DimMunicipality[municipality], ASC) RETURN CONCATENATEX(_Top, DimMunicipality[municipality], "")
+		lineageTag: 12345678-1234-4a9b-8abc-123456789107
+
+	measure 'Snapshot View Top Candidate Score' = VAR _Top = TOPN(1, FILTER(VALUES(DimMunicipality[municipality]), [Snapshot View Show In Top N] = 1), [Snapshot View Rank], ASC, DimMunicipality[municipality], ASC) RETURN MAXX(_Top, [Snapshot View Decision Score])
+		formatString: 0.0000
+		lineageTag: 12345678-1234-4a9b-8abc-123456789108
+
+	measure 'Snapshot View Visible Candidates' = COUNTROWS(FILTER(VALUES(DimMunicipality[municipality]), [Snapshot View Show In Top N] = 1))
+		formatString: 0
+		lineageTag: 12345678-1234-4a9b-8abc-123456789109
+
+	measure 'Map Marker Top N' = IF([Show In Top N] = 1, 1, BLANK())
+		formatString: 0
+		lineageTag: 79d339fc-c78d-426e-a854-e9dcf3351589
+
+	measure 'Focus Municipality' = VAR _Selected = SELECTEDVALUE(DimMunicipality[municipality]) RETURN COALESCE(_Selected, [Top Candidate])
+		lineageTag: 366fce6b-d192-4d30-bb07-752ef5025c23
+
+	measure 'Focus EV Volume Score' = VAR _Muni = [Focus Municipality] RETURN CALCULATE([Current EV Volume Score], REMOVEFILTERS(DimMunicipality), TREATAS({_Muni}, DimMunicipality[municipality]))
+		formatString: 0.0000
+		lineageTag: e6e7644c-a5a9-48f9-ae53-b8e13f9ec384
+
+	measure 'Focus EV Growth Score' = VAR _Muni = [Focus Municipality] RETURN CALCULATE([Current EV Growth Score], REMOVEFILTERS(DimMunicipality), TREATAS({_Muni}, DimMunicipality[municipality]))
+		formatString: 0.0000
+		lineageTag: bf6bb721-d8bc-4e1e-ad56-32c4e711f3d4
+
+	measure 'Focus Electricity Price Score' = VAR _Muni = [Focus Municipality] RETURN CALCULATE([Current Electricity Price Score], REMOVEFILTERS(DimMunicipality), TREATAS({_Muni}, DimMunicipality[municipality]))
+		formatString: 0.0000
+		lineageTag: fa05db3d-61e2-4e10-869b-3c5fd1f4b378
+
+	measure 'Focus Decision Score' = VAR _Muni = [Focus Municipality] RETURN CALCULATE([Current Decision Score], REMOVEFILTERS(DimMunicipality), TREATAS({_Muni}, DimMunicipality[municipality]))
+		formatString: 0.0000
+		lineageTag: d959d96e-5d06-4f69-ac79-32d451c13c3e
+
+	measure 'Focus Component Score' = SWITCH(SELECTEDVALUE(ScoreComponents[Component]), "EV volume", [Focus EV Volume Score], "EV growth", [Focus EV Growth Score], "Electricity price", [Focus Electricity Price Score], BLANK())
+		formatString: 0.0000
+		lineageTag: 1e7d229f-c584-4753-9a91-72b883aa816e
+
+	measure 'Current Decision Score Top N' =
+			
+			IF([Show In Top N] = 1, [Current Decision Score], BLANK())
+		formatString: 0.0000
+		lineageTag: 9e18d3a4-59ae-46bc-9e9e-88244c6c6b1f
+
+	measure 'Current EV Registrations 12M Top N' =
+			
+			IF([Show In Top N] = 1, [Current EV Registrations 12M], BLANK())
+		formatString: 0
+		lineageTag: 800d4344-2602-4472-8e11-e2215671168a
+
+	measure 'Current EV Growth 6M Top N' =
+			
+			IF([Show In Top N] = 1, [Current EV Growth 6M], BLANK())
+		formatString: 0
+		lineageTag: 74d9a2ee-1901-4dd3-b343-1b85f14c153f
+
+	measure 'Current Electricity Price Top N' =
+			
+			IF([Show In Top N] = 1, [Current Electricity Price], BLANK())
+		formatString: 0.0000
+		lineageTag: 58ef3cd5-93a8-45aa-b29d-7fb628191a4f
+
+	measure 'Top Candidate' =
+			
+			VAR _Top =
+			    TOPN(
+			        1,
+			        FILTER(VALUES(DimMunicipality[municipality]), [Show In Top N] = 1),
+			        [Current Rank], ASC,
+			        DimMunicipality[municipality], ASC
+			    )
+			RETURN
+			    CONCATENATEX(_Top, DimMunicipality[municipality], "")
+		lineageTag: 06c8d508-877b-40b9-9265-dd662e084f34
+
+	measure 'Top Candidate Score' =
+			
+			VAR _Top =
+			    TOPN(
+			        1,
+			        FILTER(VALUES(DimMunicipality[municipality]), [Show In Top N] = 1),
+			        [Current Rank], ASC,
+			        DimMunicipality[municipality], ASC
+			    )
+			RETURN
+			    MAXX(_Top, [Current Decision Score])
+		formatString: 0.0000
+		lineageTag: f51d9d97-2ce9-4a19-a4b3-dfaebbd9aaa2
+
+	measure 'Visible Candidates' =
+			
+			COUNTROWS(
+			    FILTER(
+			        VALUES(DimMunicipality[municipality]),
+			        [Show In Top N] = 1
+			    )
+			)
+		formatString: 0
+		lineageTag: caa050bc-66a1-4dc8-90c1-bef689232a2c
+
+	measure 'Previous Snapshot Date' =
+			
+			CALCULATE(
+			    MAX(SnapshotMetadataTable[snapshot_date]),
+			    SnapshotMetadataTable[is_current] = FALSE()
+			)
+		formatString: dd MMM yyyy
+		lineageTag: 7f3fb7b1-9a1c-4db0-8b38-7706ac3ee801
+
+	measure 'Current Snapshot Date' =
+			
+			CALCULATE(
+			    MAX(SnapshotMetadataTable[snapshot_date]),
+			    SnapshotMetadataTable[is_current] = TRUE()
+			)
+		formatString: dd MMM yyyy
+		lineageTag: 88449253-3f9a-40f6-952b-11edb34ecc1d
+
+	measure 'Average Current Decision Score' =
+			
+			AVERAGEX(
+			    FILTER(VALUES(DimMunicipality[municipality]), [Show In Top N] = 1),
+			    [Current Decision Score]
+			)
+		formatString: 0.0000
+		lineageTag: 1630ec73-fe1b-4a8c-94cb-8c789bfab832
+
+	measure 'Previous Rank Top N' =
+			
+			IF([Show In Top N] = 1, [Previous Rank], BLANK())
+		formatString: 0
+		lineageTag: 343943f4-ab51-4f4a-acb3-c17734a33674
+
+	measure 'Rank Change Top N' =
+			
+			IF([Show In Top N] = 1, [Rank Change], BLANK())
+		formatString: 0
+		lineageTag: 2098ac70-602d-46cd-a670-e27ea44911a6
+
+	measure 'Previous Decision Score Top N' =
+			
+			IF([Show In Top N] = 1, [Previous Decision Score], BLANK())
+		formatString: 0.0000
+		lineageTag: 8fc450f9-d9f4-47ca-8570-adedc2b2d836
+
+	measure 'Decision Score Change Top N' =
+			
+			IF([Show In Top N] = 1, [Decision Score Change], BLANK())
+		formatString: 0.0000
+		lineageTag: a12f1dd6-0529-4be0-ab70-8230402b011b
+
+	measure 'EV Registrations Change Top N' =
+			
+			IF([Show In Top N] = 1, [EV Registrations Change], BLANK())
+		formatString: 0
+		lineageTag: e6f24c83-5cf1-4be3-8574-8951936a3fe5
+
+	measure 'Growth Change Top N' =
+			
+			IF([Show In Top N] = 1, [Growth Change], BLANK())
+		formatString: 0
+		lineageTag: 072a9e44-f21c-4585-b36e-17282efe2139
+
+	measure 'Electricity Price Change Top N' =
+			
+			IF([Show In Top N] = 1, [Electricity Price Change], BLANK())
+		formatString: 0.0000
+		lineageTag: fcdc4cce-ed7c-4570-9aa2-acf74f98befb
+
+	measure 'Biggest Riser' =
+			
+			VAR _Top =
+			    TOPN(
+			        1,
+			        FILTER(VALUES(DimMunicipality[municipality]), NOT ISBLANK([Rank Change])),
+			        [Rank Change], DESC,
+			        DimMunicipality[municipality], ASC
+			    )
+			RETURN
+			    CONCATENATEX(_Top, DimMunicipality[municipality] & "  +" & FORMAT([Rank Change], "0"), "")
+		lineageTag: 554ba071-8f1e-41fa-8fb8-34ee77ba3e19
+
+	measure 'Biggest Faller' =
+			
+			VAR _Bottom =
+			    TOPN(
+			        1,
+			        FILTER(VALUES(DimMunicipality[municipality]), NOT ISBLANK([Rank Change])),
+			        [Rank Change], ASC,
+			        DimMunicipality[municipality], ASC
+			    )
+			RETURN
+			    CONCATENATEX(_Bottom, DimMunicipality[municipality] & "  " & FORMAT([Rank Change], "0"), "")
+		lineageTag: ff080299-83bc-4692-98ce-1b7d03d4d20e
+
+	measure 'Entrants Count' =
+			
+			CALCULATE(
+			    COUNTROWS(SnapshotComparisonTable),
+			    SnapshotComparisonTable[membership_status] = "Entered Top 50"
+			)
+		formatString: 0
+		lineageTag: c91e767d-f1fa-4eaf-be6e-1e8eb176af0e
+
+	measure 'Exits Count' =
+			
+			CALCULATE(
+			    COUNTROWS(SnapshotComparisonTable),
+			    SnapshotComparisonTable[membership_status] = "Exited Top 50"
+			)
+		formatString: 0
+		lineageTag: 1ab86b46-1e11-4d48-bdd2-79787bf42f83
+
+	measure 'Selected Rank Display' = IF(HASONEVALUE(DimMunicipality[municipality]), FORMAT([Current Rank], "0"), "—")
+		lineageTag: 09c61060-9b15-49c6-9b1b-43d63863829c
+
+	measure 'Selected Decision Score Display' = IF(HASONEVALUE(DimMunicipality[municipality]), FORMAT([Current Decision Score], "0.0000"), "—")
+		lineageTag: fc4a90f8-e1fc-4339-87ac-f009e62c33f0
+
+	measure 'Selected EV Registrations 12M Display' = IF(HASONEVALUE(DimMunicipality[municipality]), FORMAT([Current EV Registrations 12M], "#,0"), "—")
+		lineageTag: 69792d71-bdec-4ab8-8203-defc2c21957a
+
+	measure 'Selected EV Growth 6M Display' = IF(HASONEVALUE(DimMunicipality[municipality]), FORMAT([Current EV Growth 6M], "#,0"), "—")
+		lineageTag: 8357ceab-8d4b-45db-8093-e29d9d855aee
+
+	measure 'Selected Electricity Price Display' = IF(HASONEVALUE(DimMunicipality[municipality]), FORMAT([Current Electricity Price], "0.0000"), "—")
+		lineageTag: 6cf6221c-5b84-4e9f-8b49-73efd3d8a408
+
+	column snapshot_sequence
+		dataType: int64
+		formatString: 0
+		lineageTag: aeedf685-358c-4ee7-8540-45557b3597ad
+		summarizeBy: none
+		sourceColumn: snapshot_sequence
+
+		annotation SummarizationSetBy = Automatic
+
+	column snapshot_label
+		dataType: string
+		lineageTag: 6d7113dc-dbef-4112-ad38-7e2ea9f0b76a
+		summarizeBy: none
+		sourceColumn: snapshot_label
+
+		annotation SummarizationSetBy = Automatic
+
+	column snapshot_run_local
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: a61f9af0-d04d-41f8-96d8-de6c1981d79b
+		summarizeBy: none
+		sourceColumn: snapshot_run_local
+
+		variation Variation
+			isDefault
+			relationship: f80aa68c-db9c-4699-825d-8c1c2ebb6b86
+			defaultHierarchy: LocalDateTable_8202ce53-6bf8-47a7-9ef1-db8761fb7d1e.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column snapshot_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: de45604d-af59-48fa-88bc-158f6a13597c
+		summarizeBy: none
+		sourceColumn: snapshot_date
+
+		variation Variation
+			isDefault
+			relationship: 1a060426-ba29-414d-a817-f65743b33e0b
+			defaultHierarchy: LocalDateTable_d3da35a5-f476-4a9b-b65e-e0386c9a70a1.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column previous_6m_start
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 481b5a6c-06ca-4d28-b681-3b8b1059504a
+		summarizeBy: none
+		sourceColumn: previous_6m_start
+
+		variation Variation
+			isDefault
+			relationship: 9506dc0a-8d78-4327-b23d-d8d4f675c688
+			defaultHierarchy: LocalDateTable_9fdfc503-38dc-4d02-aee6-2524c04ef5aa.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column previous_6m_end
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: c059808c-9151-4339-a1cc-3019929d76b2
+		summarizeBy: none
+		sourceColumn: previous_6m_end
+
+		variation Variation
+			isDefault
+			relationship: 59e8af81-4ecb-402c-88e3-464e686b2932
+			defaultHierarchy: LocalDateTable_e8f1b3ef-75be-480e-96ac-770ea995b4a2.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column recent_6m_start
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: b6f03655-7d67-4e4c-b829-0387d7e34db7
+		summarizeBy: none
+		sourceColumn: recent_6m_start
+
+		variation Variation
+			isDefault
+			relationship: 2605e1f0-3bb1-4964-b0cd-51ba9951a2ab
+			defaultHierarchy: LocalDateTable_10866205-0d7c-4f6a-a943-c4938fd24e84.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column recent_6m_end
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 088a37e2-e199-4258-a68d-42a0f8d67575
+		summarizeBy: none
+		sourceColumn: recent_6m_end
+
+		variation Variation
+			isDefault
+			relationship: 7eb0dd7a-b518-435f-a1fd-1341c86eec00
+			defaultHierarchy: LocalDateTable_895440b5-9a54-41da-8b8e-9b4cac3c4c66.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column municipality
+		dataType: string
+		lineageTag: 16ec8c36-57d1-477c-934a-0c65da8ca313
+		summarizeBy: none
+		sourceColumn: municipality
+
+		annotation SummarizationSetBy = Automatic
+
+	column country
+		dataType: string
+		lineageTag: 90d8f986-145a-4ae2-b6ee-56621c2cb171
+		summarizeBy: none
+		sourceColumn: country
+
+		annotation SummarizationSetBy = Automatic
+
+	column map_location
+		dataType: string
+		lineageTag: 2ee67288-95f0-4797-9c0b-34491fc971d4
+		summarizeBy: none
+		sourceColumn: map_location
+
+		annotation SummarizationSetBy = Automatic
+
+	column price_area
+		dataType: string
+		lineageTag: b7f81a99-233d-4f6b-9d6b-59ccbfb73fd6
+		summarizeBy: none
+		sourceColumn: price_area
+
+		annotation SummarizationSetBy = Automatic
+
+	column rank
+		dataType: int64
+		formatString: 0
+		lineageTag: ba935d5e-7781-43a3-a411-cc8e361f8794
+		summarizeBy: sum
+		sourceColumn: rank
+
+		annotation SummarizationSetBy = Automatic
+
+	column ev_registrations_12m
+		dataType: int64
+		formatString: 0
+		lineageTag: ddc8e504-7560-4303-9a3a-61bec118eafb
+		summarizeBy: sum
+		sourceColumn: ev_registrations_12m
+
+		annotation SummarizationSetBy = Automatic
+
+	column ev_registration_change_6m
+		dataType: int64
+		formatString: 0
+		lineageTag: 649c7c34-2083-4e53-ab4d-7939a8dfbc41
+		summarizeBy: sum
+		sourceColumn: ev_registration_change_6m
+
+		annotation SummarizationSetBy = Automatic
+
+	column avg_sek_per_kwh
+		dataType: double
+		lineageTag: 1cd19ecb-8d14-4e8f-a369-6f1a87d11bd9
+		summarizeBy: sum
+		sourceColumn: avg_sek_per_kwh
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ev_volume_score
+		dataType: double
+		lineageTag: 3dba91b0-9fb3-4b05-becb-fe7981c060e6
+		summarizeBy: sum
+		sourceColumn: ev_volume_score
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ev_growth_score
+		dataType: double
+		lineageTag: 0452cb1c-f0a5-48f4-aeb8-8bd9e73504c4
+		summarizeBy: sum
+		sourceColumn: ev_growth_score
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column electricity_price_score
+		dataType: double
+		lineageTag: 08ddc53a-ba5f-471c-8b40-6757eb9ef628
+		summarizeBy: sum
+		sourceColumn: electricity_price_score
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column decision_score
+		dataType: double
+		lineageTag: ee3f736f-327e-402f-8b78-e0bbbc8acf3a
+		summarizeBy: sum
+		sourceColumn: decision_score
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition GoldSnapshotsTable = m
+		mode: import
+		source =
+				let
+				    Source = Excel.Workbook(File.Contents("C:\PATH\TO\EV_Charging_Gold_Snapshots_PowerBI.xlsx"), null, true),
+				    GoldSnapshotsTable_Table = Source{[Item="GoldSnapshotsTable",Kind="Table"]}[Data],
+				    #"Changed Type" = Table.TransformColumnTypes(GoldSnapshotsTable_Table,{{"snapshot_sequence", Int64.Type}, {"snapshot_label", type text}, {"snapshot_run_local", type datetime}, {"snapshot_date", type date}, {"previous_6m_start", type date}, {"previous_6m_end", type date}, {"recent_6m_start", type date}, {"recent_6m_end", type date}, {"municipality", type text}, {"country", type text}, {"map_location", type text}, {"price_area", type text}, {"rank", Int64.Type}, {"ev_registrations_12m", Int64.Type}, {"ev_registration_change_6m", Int64.Type}, {"avg_sek_per_kwh", type number}, {"ev_volume_score", type number}, {"ev_growth_score", type number}, {"electricity_price_score", type number}, {"decision_score", type number}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

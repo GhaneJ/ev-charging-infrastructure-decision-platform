@@ -1,0 +1,192 @@
+table DimMunicipality
+	lineageTag: b3be62b8-f6cb-4d61-ae91-6d40ea366d61
+
+	column municipality
+		lineageTag: 5c4ce963-3f93-40e1-9963-e5ca872abd85
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [municipality]
+
+		annotation SummarizationSetBy = Automatic
+
+	column country
+		lineageTag: f2144365-678f-4aa6-99ec-088a68f55fe2
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [country]
+
+		annotation SummarizationSetBy = Automatic
+
+	column map_location
+		lineageTag: 9d2af562-43e3-41a0-ab2f-a4b14b1e888c
+		dataCategory: Place
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [map_location]
+
+		annotation SummarizationSetBy = Automatic
+
+	column price_area
+		lineageTag: 868372ca-1785-4581-81f7-89731b7054cc
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [price_area]
+
+		annotation SummarizationSetBy = Automatic
+
+	column membership_status
+		lineageTag: bc212610-24c9-476e-ad2a-e8fbc7e6a8d9
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [membership_status]
+
+		annotation SummarizationSetBy = Automatic
+
+	column current_rank
+		formatString: 0
+		lineageTag: 768a86d5-5f1a-490d-a907-e7056de119ae
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [current_rank]
+
+		annotation SummarizationSetBy = Automatic
+
+	column previous_rank
+		formatString: 0
+		lineageTag: 1fef2a58-5faf-4320-a49d-434feeb074bf
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [previous_rank]
+
+		annotation SummarizationSetBy = Automatic
+
+	column rank_change
+		formatString: 0
+		lineageTag: 7e50802b-2d18-4f4d-bb6e-8145fb2fb915
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [rank_change]
+
+		annotation SummarizationSetBy = Automatic
+
+	column rank_direction
+		lineageTag: 19be131a-0396-440a-a5cd-83684e007d21
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [rank_direction]
+
+		annotation SummarizationSetBy = Automatic
+
+	column current_ev_registrations_12m
+		formatString: 0
+		lineageTag: a046edbf-ea99-4258-8cff-58c7ab9881ee
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [current_ev_registrations_12m]
+
+		annotation SummarizationSetBy = Automatic
+
+	column current_ev_registration_change_6m
+		formatString: 0
+		lineageTag: 67540173-bfc0-42f0-afe2-f2f5ad004d7c
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [current_ev_registration_change_6m]
+
+		annotation SummarizationSetBy = Automatic
+
+	column current_avg_sek_per_kwh
+		formatString: 0.0000
+		lineageTag: 0789afd4-1f6e-4673-9567-6a3eee29ad0b
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [current_avg_sek_per_kwh]
+
+		annotation SummarizationSetBy = Automatic
+
+	column current_decision_score
+		formatString: 0.0000
+		lineageTag: 0fc5e33f-3892-4d90-befb-4f281e7d75fa
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [current_decision_score]
+
+		annotation SummarizationSetBy = Automatic
+
+	column rank_band = SWITCH(TRUE(), ISBLANK([current_rank]), "Outside Top 50", [current_rank] <= 5, "1–5", [current_rank] <= 10, "6–10", [current_rank] <= 25, "11–25", "26–50")
+		dataType: string
+		lineageTag: 5615d106-14af-4643-bbbc-6d67039c07eb
+		summarizeBy: none
+		sortByColumn: rank_band_sort
+
+	column rank_band_sort = SWITCH(TRUE(), ISBLANK([current_rank]), 5, [current_rank] <= 5, 1, [current_rank] <= 10, 2, [current_rank] <= 25, 3, 4)
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 6bda85d1-34a9-4fb6-893b-64fd4c51dcbd
+		summarizeBy: none
+
+	column ev_band = SWITCH(TRUE(), ISBLANK([current_ev_registrations_12m]), "No current value", [current_ev_registrations_12m] <= 500, "≤500", [current_ev_registrations_12m] <= 1000, "501–1k", [current_ev_registrations_12m] <= 3000, "1k–3k", ">3k")
+		dataType: string
+		lineageTag: eb7c8ccd-4713-4b7d-84e4-fbe7b7f6bdd2
+		summarizeBy: none
+		sortByColumn: ev_band_sort
+
+	column ev_band_sort = SWITCH(TRUE(), ISBLANK([current_ev_registrations_12m]), 5, [current_ev_registrations_12m] <= 500, 1, [current_ev_registrations_12m] <= 1000, 2, [current_ev_registrations_12m] <= 3000, 3, 4)
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 9e7acc57-c89e-4511-af0a-e18495d5af23
+		summarizeBy: none
+
+	column growth_band = SWITCH(TRUE(), ISBLANK([current_ev_registration_change_6m]), "No current value", [current_ev_registration_change_6m] <= 50, "≤50", [current_ev_registration_change_6m] <= 100, "51–100", [current_ev_registration_change_6m] <= 250, "101–250", ">250")
+		dataType: string
+		lineageTag: b05064b5-ca50-46e6-ae7f-36f780e79fa8
+		summarizeBy: none
+		sortByColumn: growth_band_sort
+
+	column growth_band_sort = SWITCH(TRUE(), ISBLANK([current_ev_registration_change_6m]), 5, [current_ev_registration_change_6m] <= 50, 1, [current_ev_registration_change_6m] <= 100, 2, [current_ev_registration_change_6m] <= 250, 3, 4)
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 7150e316-193b-4592-a1e1-ef51037fcd43
+		summarizeBy: none
+
+	column price_band = SWITCH(TRUE(), ISBLANK([current_avg_sek_per_kwh]), "No current value", [current_avg_sek_per_kwh] <= 0.45, "Low · 0.44", [current_avg_sek_per_kwh] <= 0.50, "Mid · 0.49", "High · 0.86")
+		dataType: string
+		lineageTag: a94e3aa8-a6cb-4e99-91bd-bcbbbddae1ca
+		summarizeBy: none
+		sortByColumn: price_band_sort
+
+	column price_band_sort = SWITCH(TRUE(), ISBLANK([current_avg_sek_per_kwh]), 4, [current_avg_sek_per_kwh] <= 0.45, 1, [current_avg_sek_per_kwh] <= 0.50, 2, 3)
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 4fbf8d2c-2d8d-48af-beb1-c0e13ba13609
+		summarizeBy: none
+
+	partition DimMunicipality = calculated
+		mode: import
+		source =
+				
+				DISTINCT(
+				    SELECTCOLUMNS(
+				        SnapshotComparisonTable,
+				        "municipality", SnapshotComparisonTable[municipality],
+				        "country", SnapshotComparisonTable[country],
+				        "map_location", SnapshotComparisonTable[map_location],
+				        "price_area", SnapshotComparisonTable[price_area],
+				        "membership_status", SnapshotComparisonTable[membership_status],
+				        "current_rank", SnapshotComparisonTable[current_rank],
+				        "previous_rank", SnapshotComparisonTable[previous_rank],
+				        "rank_change", SnapshotComparisonTable[rank_change],
+				        "rank_direction", SnapshotComparisonTable[rank_direction],
+				        "current_ev_registrations_12m", SnapshotComparisonTable[current_ev_registrations_12m],
+				        "current_ev_registration_change_6m", SnapshotComparisonTable[current_ev_registration_change_6m],
+				        "current_avg_sek_per_kwh", SnapshotComparisonTable[current_avg_sek_per_kwh],
+				        "current_decision_score", SnapshotComparisonTable[current_decision_score]
+				    )
+				)
+
+	annotation PBI_Id = 6482c3ddb5d2426fa1109d5abfccfcf2
+

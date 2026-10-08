@@ -1,0 +1,23 @@
+# Power BI local/cache/binary state
+**/.pbi/
+*.abf
+*.pbix
+
+# Python / notebook local state
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.venv/
+venv/
+
+# IDE / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Secrets / local environment
+.env
+.env.*
+*.secret
+secrets.*

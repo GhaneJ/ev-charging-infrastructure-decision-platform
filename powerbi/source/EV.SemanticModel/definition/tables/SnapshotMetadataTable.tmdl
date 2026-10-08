@@ -1,0 +1,157 @@
+table SnapshotMetadataTable
+	lineageTag: 5f283e03-3fab-41ef-8c28-3b7ff8f395ac
+
+	column snapshot_sequence
+		dataType: int64
+		formatString: 0
+		lineageTag: 611374ba-8fa4-4bcb-b7a7-23f3802ef5ce
+		summarizeBy: none
+		sourceColumn: snapshot_sequence
+
+		annotation SummarizationSetBy = Automatic
+
+	column snapshot_label
+		dataType: string
+		lineageTag: 2deb8b80-021a-4a9b-8716-9276ece96663
+		summarizeBy: none
+		sourceColumn: snapshot_label
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_current
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 99bbdf55-9006-4626-a360-e586a868b633
+		summarizeBy: none
+		sourceColumn: is_current
+
+		annotation SummarizationSetBy = Automatic
+
+	column snapshot_run_local
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: f01c8ece-0681-42f1-b8e5-39ac765deb45
+		summarizeBy: none
+		sourceColumn: snapshot_run_local
+
+		variation Variation
+			isDefault
+			relationship: 1cf2bce2-6bae-44db-97aa-d3bca5e9c5d3
+			defaultHierarchy: LocalDateTable_f40931ad-6f39-4a1b-bec0-5a35ddd6f2e5.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column snapshot_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 61ac25ab-65ff-4b77-94ce-1fe8f99146dc
+		summarizeBy: none
+		sourceColumn: snapshot_date
+
+		variation Variation
+			isDefault
+			relationship: 8402f9e3-396f-4c6d-a7da-4a70c5e8852b
+			defaultHierarchy: LocalDateTable_c822a3f8-5dea-4022-be76-fcbb1be7e61e.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column previous_6m_start
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: a4e34647-4318-40dd-a751-955e4611c7ab
+		summarizeBy: sum
+		sourceColumn: previous_6m_start
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column previous_6m_end
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 6a0b20d9-a1d1-48b8-8045-6df526b8c72a
+		summarizeBy: none
+		sourceColumn: previous_6m_end
+
+		variation Variation
+			isDefault
+			relationship: 8638425f-4b2b-4c4e-8312-4ea832dc9e40
+			defaultHierarchy: LocalDateTable_63b8cf18-3313-4d55-be86-59f07175e82d.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column recent_6m_start
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: c549334d-3aa5-405e-9a4e-77f059215e8c
+		summarizeBy: none
+		sourceColumn: recent_6m_start
+
+		variation Variation
+			isDefault
+			relationship: 8b49d623-bb3a-41db-a878-07e75a45dfcf
+			defaultHierarchy: LocalDateTable_afbdb074-b1e5-4045-b184-48c06dccc048.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column recent_6m_end
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 3cc71f03-4cc0-4a48-86bf-d084c2107cab
+		summarizeBy: none
+		sourceColumn: recent_6m_end
+
+		variation Variation
+			isDefault
+			relationship: 05d5dd40-eafd-48f5-b4c5-4169a5880f6c
+			defaultHierarchy: LocalDateTable_a8e93fa7-0f4f-41af-9ea3-c7a71fb4e210.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column source_file
+		dataType: string
+		lineageTag: f07d13fa-08c9-4c61-8e8a-be8b2748b8f3
+		summarizeBy: none
+		sourceColumn: source_file
+
+		annotation SummarizationSetBy = Automatic
+
+	column top50_rows
+		dataType: int64
+		formatString: 0
+		lineageTag: b7031dd5-4064-441f-ac3c-bd1d70310bc8
+		summarizeBy: sum
+		sourceColumn: top50_rows
+
+		annotation SummarizationSetBy = Automatic
+
+	column snapshot_selector = IF([is_current], "Latest · " & FORMAT([snapshot_date], "dd MMM yyyy"), "Previous · " & FORMAT([snapshot_date], "dd MMM yyyy"))
+		dataType: string
+		lineageTag: 12345678-1234-4a9b-8abc-123456789001
+		summarizeBy: none
+		sortByColumn: snapshot_sequence
+
+		annotation SummarizationSetBy = User
+
+	partition SnapshotMetadataTable = m
+		mode: import
+		source =
+				let
+				    Source = Excel.Workbook(File.Contents("C:\PATH\TO\EV_Charging_Gold_Snapshots_PowerBI.xlsx"), null, true),
+				    SnapshotMetadataTable_Table = Source{[Item="SnapshotMetadataTable",Kind="Table"]}[Data],
+				    #"Changed Type" = Table.TransformColumnTypes(SnapshotMetadataTable_Table,{{"snapshot_sequence", Int64.Type}, {"snapshot_label", type text}, {"is_current", type logical}, {"snapshot_run_local", type datetime}, {"snapshot_date", type date}, {"previous_6m_start", type date}, {"previous_6m_end", type date}, {"recent_6m_start", type date}, {"recent_6m_end", type date}, {"source_file", type text}, {"top50_rows", Int64.Type}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

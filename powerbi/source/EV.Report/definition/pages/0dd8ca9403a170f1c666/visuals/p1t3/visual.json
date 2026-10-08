@@ -1,0 +1,37 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.13.0/schema.json",
+  "name": "p1t3",
+  "position": {
+    "x": 100.34129692832764,
+    "y": 150.51194539249147,
+    "z": 7000,
+    "height": 31.74061433447099,
+    "width": 569.283276450512,
+    "tabOrder": 7000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Switch between the previous G snapshot and the latest automated refresh",
+                    "textStyle": {
+                      "fontSize": "14pt",
+                      "color": "#b8c6d1"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

@@ -1,0 +1,1080 @@
+cultureInfo en-US
+
+	linguisticMetadata =
+			{
+			  "Version": "2.0.0",
+			  "Language": "en-US",
+			  "Entities": {
+			    "dimmunicipality.municipality": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "DimMunicipality",
+			          "ConceptualProperty": "municipality"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Municipality": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "dimmunicipality.map_location": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "DimMunicipality",
+			          "ConceptualProperty": "map_location"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Municipality": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "dimmunicipality.price_area": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "DimMunicipality",
+			          "ConceptualProperty": "price_area"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Price area": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "dimmunicipality.membership_status": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "DimMunicipality",
+			          "ConceptualProperty": "membership_status"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "goldsnapshotstable.snapshot_view_decision_score_top_n": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "GoldSnapshotsTable",
+			          "ConceptualProperty": "Snapshot View Decision Score Top N"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Decision score": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "goldsnapshotstable.snapshot_view_rank": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "GoldSnapshotsTable",
+			          "ConceptualProperty": "Snapshot View Rank"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Rank": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "goldsnapshotstable.snapshot_view_ev_growth_6m": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "GoldSnapshotsTable",
+			          "ConceptualProperty": "Snapshot View EV Growth 6M"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Growth 6M": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "goldsnapshotstable.snapshot_view_ev_registrations_12m": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "GoldSnapshotsTable",
+			          "ConceptualProperty": "Snapshot View EV Registrations 12M"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "EV registrations 12M": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "goldsnapshotstable.snapshot_view_top_candidate": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "GoldSnapshotsTable",
+			          "ConceptualProperty": "Snapshot View Top Candidate"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Strongest candidate": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "goldsnapshotstable.snapshot_view_top_candidate_score": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "GoldSnapshotsTable",
+			          "ConceptualProperty": "Snapshot View Top Candidate Score"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Top decision score": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "goldsnapshotstable.snapshot_view_visible_candidates": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "GoldSnapshotsTable",
+			          "ConceptualProperty": "Snapshot View Visible Candidates"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Candidates in view": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "goldsnapshotstable.map_marker_top_n": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "GoldSnapshotsTable",
+			          "ConceptualProperty": "Map Marker Top N"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Candidate": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "goldsnapshotstable.current_rank": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "GoldSnapshotsTable",
+			          "ConceptualProperty": "Current Rank"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Rank": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        },
+			        {
+			          "Current rank": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "goldsnapshotstable.current_ev_registrations_12m": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "GoldSnapshotsTable",
+			          "ConceptualProperty": "Current EV Registrations 12M"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "EV registrations 12M": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "goldsnapshotstable.current_ev_growth_6m": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "GoldSnapshotsTable",
+			          "ConceptualProperty": "Current EV Growth 6M"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Growth 6M": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "goldsnapshotstable.current_electricity_price": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "GoldSnapshotsTable",
+			          "ConceptualProperty": "Current Electricity Price"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "SEK/kWh": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "goldsnapshotstable.current_decision_score": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "GoldSnapshotsTable",
+			          "ConceptualProperty": "Current Decision Score"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Decision score": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "goldsnapshotstable.selected_municipality": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "GoldSnapshotsTable",
+			          "ConceptualProperty": "Selected Municipality"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Selected municipality": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "goldsnapshotstable.selected_rank": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "GoldSnapshotsTable",
+			          "ConceptualProperty": "Selected Rank"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "goldsnapshotstable.selected_decision_score": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "GoldSnapshotsTable",
+			          "ConceptualProperty": "Selected Decision Score"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "goldsnapshotstable.selected_ev_registrations_12m": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "GoldSnapshotsTable",
+			          "ConceptualProperty": "Selected EV Registrations 12M"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "goldsnapshotstable.selected_ev_growth_6m": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "GoldSnapshotsTable",
+			          "ConceptualProperty": "Selected EV Growth 6M"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "goldsnapshotstable.selected_electricity_price": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "GoldSnapshotsTable",
+			          "ConceptualProperty": "Selected Electricity Price"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "goldsnapshotstable.current_electricity_price_top_n": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "GoldSnapshotsTable",
+			          "ConceptualProperty": "Current Electricity Price Top N"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Electricity price": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "goldsnapshotstable.current_ev_registrations_12m_top_n": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "GoldSnapshotsTable",
+			          "ConceptualProperty": "Current EV Registrations 12M Top N"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "EV registrations 12M": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "goldsnapshotstable.average_current_decision_score": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "GoldSnapshotsTable",
+			          "ConceptualProperty": "Average Current Decision Score"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "goldsnapshotstable.focus_component_score": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "GoldSnapshotsTable",
+			          "ConceptualProperty": "Focus Component Score"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Score": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "goldsnapshotstable.rank_change_top_n": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "GoldSnapshotsTable",
+			          "ConceptualProperty": "Rank Change Top N"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "goldsnapshotstable.previous_rank_top_n": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "GoldSnapshotsTable",
+			          "ConceptualProperty": "Previous Rank Top N"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "goldsnapshotstable.decision_score_change_top_n": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "GoldSnapshotsTable",
+			          "ConceptualProperty": "Decision Score Change Top N"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "goldsnapshotstable.biggest_riser": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "GoldSnapshotsTable",
+			          "ConceptualProperty": "Biggest Riser"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Biggest riser": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "goldsnapshotstable.biggest_faller": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "GoldSnapshotsTable",
+			          "ConceptualProperty": "Biggest Faller"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Biggest faller": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "goldsnapshotstable.entrants_count": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "GoldSnapshotsTable",
+			          "ConceptualProperty": "Entrants Count"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Entrants": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "goldsnapshotstable.exits_count": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "GoldSnapshotsTable",
+			          "ConceptualProperty": "Exits Count"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Exits": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "goldsnapshotstable.previous_decision_score_top_n": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "GoldSnapshotsTable",
+			          "ConceptualProperty": "Previous Decision Score Top N"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "goldsnapshotstable.current_decision_score_top_n": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "GoldSnapshotsTable",
+			          "ConceptualProperty": "Current Decision Score Top N"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "goldsnapshotstable.ev_registrations_change_top_n": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "GoldSnapshotsTable",
+			          "ConceptualProperty": "EV Registrations Change Top N"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "goldsnapshotstable.growth_change_top_n": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "GoldSnapshotsTable",
+			          "ConceptualProperty": "Growth Change Top N"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "goldsnapshotstable.electricity_price_change_top_n": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "GoldSnapshotsTable",
+			          "ConceptualProperty": "Electricity Price Change Top N"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "scorecomponents.component": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "ScoreComponents",
+			          "ConceptualProperty": "Component"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Component": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "goldsnapshotstable.selected_rank_display": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "GoldSnapshotsTable",
+			          "ConceptualProperty": "Selected Rank Display"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Rank": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "goldsnapshotstable.selected_decision_score_display": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "GoldSnapshotsTable",
+			          "ConceptualProperty": "Selected Decision Score Display"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Decision score": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "goldsnapshotstable.selected_ev_registrations_12m_display": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "GoldSnapshotsTable",
+			          "ConceptualProperty": "Selected EV Registrations 12M Display"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "EV registrations · 12M": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "goldsnapshotstable.selected_ev_growth_6m_display": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "GoldSnapshotsTable",
+			          "ConceptualProperty": "Selected EV Growth 6M Display"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Growth · 6M": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "goldsnapshotstable.selected_electricity_price_display": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "GoldSnapshotsTable",
+			          "ConceptualProperty": "Selected Electricity Price Display"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Electricity price · SEK/kWh": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "snapshotcomparisontable.previous_rank": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "SnapshotComparisonTable",
+			          "ConceptualProperty": "Previous Rank"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Previous rank": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "snapshotcomparisontable.decision_score_change": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "SnapshotComparisonTable",
+			          "ConceptualProperty": "Decision Score Change"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Score change": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "snapshotcomparisontable.rank_change": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "SnapshotComparisonTable",
+			          "ConceptualProperty": "Rank Change"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Rank change": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "snapshotcomparisontable.municipality": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "SnapshotComparisonTable",
+			          "ConceptualProperty": "municipality"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Municipality": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "snapshotcomparisontable.membership_status": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "SnapshotComparisonTable",
+			          "ConceptualProperty": "membership_status"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Status": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "snapshotcomparisontable.previous_rank1": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "SnapshotComparisonTable",
+			          "ConceptualProperty": "previous_rank"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Previous rank": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "snapshotcomparisontable.current_rank": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "SnapshotComparisonTable",
+			          "ConceptualProperty": "current_rank"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Current rank": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "snapshotcomparisontable.rank_change1": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "SnapshotComparisonTable",
+			          "ConceptualProperty": "rank_change"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Rank Δ": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "snapshotcomparisontable.previous_decision_score": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "SnapshotComparisonTable",
+			          "ConceptualProperty": "previous_decision_score"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Previous score": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "snapshotcomparisontable.current_decision_score": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "SnapshotComparisonTable",
+			          "ConceptualProperty": "current_decision_score"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Current score": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "snapshotcomparisontable.decision_score_change1": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "SnapshotComparisonTable",
+			          "ConceptualProperty": "decision_score_change"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Score Δ": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "snapshotcomparisontable.ev_registrations_12m_change": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "SnapshotComparisonTable",
+			          "ConceptualProperty": "ev_registrations_12m_change"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "EV registrations Δ": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "snapshotcomparisontable.growth_change": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "SnapshotComparisonTable",
+			          "ConceptualProperty": "growth_change"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Growth Δ": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "snapshotcomparisontable.electricity_price_change": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "SnapshotComparisonTable",
+			          "ConceptualProperty": "electricity_price_change"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Price Δ": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    }
+			  }
+			}
+		contentType: json
+

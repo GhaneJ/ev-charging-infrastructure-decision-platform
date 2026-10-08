@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.13.0/schema.json",
+  "name": "p4t3",
+  "position": {
+    "x": 80,
+    "y": 150,
+    "z": 10000,
+    "height": 32,
+    "width": 1120,
+    "tabOrder": 10000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Open the score and inspect how volume, growth and energy price shape the recommendation.",
+                    "textStyle": {
+                      "fontSize": "14pt",
+                      "color": "#B8C6D1",
+                      "fontWeight": "normal"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "name": "trg_charging_infrastructure_weekly",
+  "type": "Microsoft.DataFactory/factories/triggers",
+  "apiVersion": "2018-06-01",
+  "properties": {
+    "description": "Runs the charging infrastructure pipeline once per week to balance data freshness and compute cost.",
+    "annotations": [],
+    "runtimeState": "Started",
+    "pipelines": [
+      {
+        "pipelineReference": {
+          "referenceName": "pl_charging_infrastructure_orchestration",
+          "type": "PipelineReference"
+        },
+        "parameters": {}
+      }
+    ],
+    "type": "ScheduleTrigger",
+    "typeProperties": {
+      "recurrence": {
+        "frequency": "Week",
+        "interval": 1,
+        "startTime": "2026-10-02T16:40:00",
+        "endTime": "2026-10-03T23:59:00",
+        "timeZone": "W. Europe Standard Time",
+        "schedule": {
+          "minutes": [
+            45
+          ],
+          "hours": [
+            16
+          ],
+          "weekDays": [
+            "Friday"
+          ]
+        }
+      }
+    }
+  }
+}

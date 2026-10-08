@@ -1,0 +1,255 @@
+{
+  "name": "pl_charging_infrastructure_orchestration",
+  "type": "Microsoft.DataFactory/factories/pipelines",
+  "apiVersion": "2018-06-01",
+  "properties": {
+    "description": "Orchestrates the complete Bronze to Silver to Gold charging infrastructure workflow in Azure Databricks.",
+    "activities": [
+      {
+        "name": "run_bronze_ingestion",
+        "description": "Runs the Bronze ingestion notebook in Azure Databricks.",
+        "type": "DatabricksJob",
+        "dependsOn": [],
+        "policy": {
+          "timeout": "01:00:00",
+          "retry": 2,
+          "retryIntervalInSeconds": 60,
+          "secureOutput": false,
+          "secureInput": false
+        },
+        "userProperties": [],
+        "typeProperties": {
+          "jobId": "<DATABRICKS_BRONZE_JOB_ID>"
+        },
+        "linkedServiceName": {
+          "referenceName": "ls_databricks",
+          "type": "LinkedServiceReference"
+        }
+      },
+      {
+        "name": "run_silver_transformation",
+        "description": "Runs the Silver transformation notebook in Azure Databricks.",
+        "type": "DatabricksJob",
+        "dependsOn": [
+          {
+            "activity": "run_bronze_ingestion",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ],
+        "policy": {
+          "timeout": "01:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureOutput": false,
+          "secureInput": false
+        },
+        "userProperties": [],
+        "typeProperties": {
+          "jobId": "<DATABRICKS_SILVER_JOB_ID>"
+        },
+        "linkedServiceName": {
+          "referenceName": "ls_databricks",
+          "type": "LinkedServiceReference"
+        }
+      },
+      {
+        "name": "run_gold_decision_support",
+        "description": "Runs the Gold decision support notebook in Azure Databricks.",
+        "type": "DatabricksJob",
+        "dependsOn": [
+          {
+            "activity": "run_silver_transformation",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ],
+        "policy": {
+          "timeout": "01:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureOutput": false,
+          "secureInput": false
+        },
+        "userProperties": [],
+        "typeProperties": {
+          "jobId": "<DATABRICKS_GOLD_JOB_ID>"
+        },
+        "linkedServiceName": {
+          "referenceName": "ls_databricks",
+          "type": "LinkedServiceReference"
+        }
+      },
+      {
+        "name": "fail_bronze_ingestion",
+        "description": "Stops the pipeline with a clear error if Bronze ingestion still fails after all retry attempts.",
+        "type": "Fail",
+        "dependsOn": [
+          {
+            "activity": "notify_bronze_failure",
+            "dependencyConditions": [
+              "Completed"
+            ]
+          }
+        ],
+        "userProperties": [],
+        "typeProperties": {
+          "message": {
+            "value": "@concat(\n  'Bronze/API ingestion failed after retries. Original error: ',\n  activity('run_bronze_ingestion').error.message,\n  ' | Run ID: ',\n  pipeline().RunId\n)",
+            "type": "Expression"
+          },
+          "errorCode": "BRONZE_API_FAILURE"
+        }
+      },
+      {
+        "name": "notify_bronze_failure",
+        "type": "WebActivity",
+        "dependsOn": [
+          {
+            "activity": "run_bronze_ingestion",
+            "dependencyConditions": [
+              "Failed"
+            ]
+          }
+        ],
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureOutput": false,
+          "secureInput": false
+        },
+        "userProperties": [],
+        "typeProperties": {
+          "method": "POST",
+          "headers": {
+            "Content-Type": "application/json"
+          },
+          "url": "<LOGIC_APP_HTTP_CALLBACK_URL_REDACTED>",
+          "body": {
+            "dataFactoryName": "@{pipeline().DataFactory}",
+            "pipelineName": "@{pipeline().Pipeline}",
+            "activityName": "run_bronze_ingestion",
+            "runId": "@{pipeline().RunId}",
+            "message": "@{activity('run_bronze_ingestion').error.message}"
+          }
+        }
+      },
+      {
+        "name": "notify_silver_failure",
+        "type": "WebActivity",
+        "dependsOn": [
+          {
+            "activity": "run_silver_transformation",
+            "dependencyConditions": [
+              "Failed"
+            ]
+          }
+        ],
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureOutput": false,
+          "secureInput": false
+        },
+        "userProperties": [],
+        "typeProperties": {
+          "method": "POST",
+          "headers": {
+            "Content-Type": "application/json"
+          },
+          "url": "<LOGIC_APP_HTTP_CALLBACK_URL_REDACTED>",
+          "body": {
+            "dataFactoryName": "@{pipeline().DataFactory}",
+            "pipelineName": "@{pipeline().Pipeline}",
+            "activityName": "run_silver_transformation",
+            "runId": "@{pipeline().RunId}",
+            "message": "@{activity('run_silver_transformation').error.message}"
+          }
+        }
+      },
+      {
+        "name": "fail_silver_transformation",
+        "type": "Fail",
+        "dependsOn": [
+          {
+            "activity": "notify_silver_failure",
+            "dependencyConditions": [
+              "Completed"
+            ]
+          }
+        ],
+        "userProperties": [],
+        "typeProperties": {
+          "message": {
+            "value": "@concat(\n  'Silver transformation failed. Original error: ',\n  activity('run_silver_transformation').error.message,\n  ' | Run ID: ',\n  pipeline().RunId\n)",
+            "type": "Expression"
+          },
+          "errorCode": "SILVER_TRANSFORMATION_FAILURE"
+        }
+      },
+      {
+        "name": "notify_gold_failure",
+        "type": "WebActivity",
+        "dependsOn": [
+          {
+            "activity": "run_gold_decision_support",
+            "dependencyConditions": [
+              "Failed"
+            ]
+          }
+        ],
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureOutput": false,
+          "secureInput": false
+        },
+        "userProperties": [],
+        "typeProperties": {
+          "method": "POST",
+          "headers": {
+            "Content-Type": "application/json"
+          },
+          "url": "<LOGIC_APP_HTTP_CALLBACK_URL_REDACTED>",
+          "body": {
+            "dataFactoryName": "@{pipeline().DataFactory}",
+            "pipelineName": "@{pipeline().Pipeline}",
+            "activityName": "run_gold_decision_support",
+            "runId": "@{pipeline().RunId}",
+            "message": "@{activity('run_gold_decision_support').error.message}"
+          }
+        }
+      },
+      {
+        "name": "fail_gold_decision_support",
+        "type": "Fail",
+        "dependsOn": [
+          {
+            "activity": "notify_gold_failure",
+            "dependencyConditions": [
+              "Completed"
+            ]
+          }
+        ],
+        "userProperties": [],
+        "typeProperties": {
+          "message": {
+            "value": "@concat(\n  'Gold decision-support processing failed. Original error: ',\n  activity('run_gold_decision_support').error.message,\n  ' | Run ID: ',\n  pipeline().RunId\n)",
+            "type": "Expression"
+          },
+          "errorCode": "GOLD_DECISION_SUPPORT_FAILURE"
+        }
+      }
+    ],
+    "policy": {
+      "elapsedTimeMetric": {}
+    },
+    "annotations": [],
+    "lastPublishTime": "2026-10-05T12:59:31Z"
+  }
+}

@@ -1,0 +1,37 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-US
+	valueFilterBehavior: independent
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_QueryOrder = ["GoldSnapshotsTable","SnapshotMetadataTable","SnapshotComparisonTable"]
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table GoldSnapshotsTable
+ref table DateTableTemplate_5a96feae-83f1-434a-8642-85dcc5c2ffb3
+ref table LocalDateTable_8202ce53-6bf8-47a7-9ef1-db8761fb7d1e
+ref table LocalDateTable_d3da35a5-f476-4a9b-b65e-e0386c9a70a1
+ref table LocalDateTable_9fdfc503-38dc-4d02-aee6-2524c04ef5aa
+ref table LocalDateTable_e8f1b3ef-75be-480e-96ac-770ea995b4a2
+ref table LocalDateTable_10866205-0d7c-4f6a-a943-c4938fd24e84
+ref table LocalDateTable_895440b5-9a54-41da-8b8e-9b4cac3c4c66
+ref table SnapshotMetadataTable
+ref table LocalDateTable_f40931ad-6f39-4a1b-bec0-5a35ddd6f2e5
+ref table LocalDateTable_c822a3f8-5dea-4022-be76-fcbb1be7e61e
+ref table LocalDateTable_63b8cf18-3313-4d55-be86-59f07175e82d
+ref table LocalDateTable_afbdb074-b1e5-4045-b184-48c06dccc048
+ref table LocalDateTable_a8e93fa7-0f4f-41af-9ea3-c7a71fb4e210
+ref table SnapshotComparisonTable
+ref table DimMunicipality
+ref table TopNSelector
+ref table ScoreComponents
+ref table DimPriceArea
+
+ref cultureInfo en-US
+

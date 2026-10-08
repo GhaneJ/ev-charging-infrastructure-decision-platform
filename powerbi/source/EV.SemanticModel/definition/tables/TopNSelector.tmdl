@@ -1,0 +1,32 @@
+table TopNSelector
+	lineageTag: 89fa8cf5-01b4-4b3b-b5e0-990cfff6cb99
+
+	measure 'Selected Top N' =
+			
+			SELECTEDVALUE(
+			    TopNSelector[Value],
+			    10
+			)
+		formatString: 0
+		lineageTag: d0d6ce13-1f32-49a7-b883-307527babffc
+
+	column Value
+		formatString: 0
+		lineageTag: b990b493-e8ce-4b88-943e-ac10306425e6
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Value]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition TopNSelector = calculated
+		mode: import
+		source =
+				
+				DATATABLE(
+				    "Value", INTEGER,
+				    {{5},{10},{20},{50}}
+				)
+
+	annotation PBI_Id = 72b7486511854607ae74ddb98c010ad0
+

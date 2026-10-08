@@ -1,0 +1,15 @@
+{
+  "name": "ls_databricks",
+  "type": "Microsoft.DataFactory/factories/linkedServices",
+  "apiVersion": "2018-06-01",
+  "properties": {
+    "description": "Azure Databricks linked service for ADF orchestration",
+    "annotations": [],
+    "type": "AzureDatabricks",
+    "typeProperties": {
+      "domain": "https://<DATABRICKS_WORKSPACE_HOST>",
+      "authentication": "MSI",
+      "workspaceResourceId": "/subscriptions/<SUBSCRIPTION_ID>/resourceGroups/<RESOURCE_GROUP>/providers/Microsoft.Databricks/workspaces/<WORKSPACE_NAME>"
+    }
+  }
+}

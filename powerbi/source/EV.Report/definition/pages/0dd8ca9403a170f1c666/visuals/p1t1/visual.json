@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.13.0/schema.json",
+  "name": "p1t1",
+  "position": {
+    "x": 100,
+    "y": 52,
+    "z": 5000,
+    "height": 28,
+    "width": 980,
+    "tabOrder": 5000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "SWEDEN EV INFRASTRUCTURE  /  DECISION SUPPORT",
+                    "textStyle": {
+                      "fontSize": "12pt",
+                      "color": "#58C1C8",
+                      "fontWeight": "bold"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

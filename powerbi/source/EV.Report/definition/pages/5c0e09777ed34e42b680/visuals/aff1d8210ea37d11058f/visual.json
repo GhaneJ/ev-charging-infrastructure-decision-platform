@@ -1,0 +1,429 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.13.0/schema.json",
+  "name": "aff1d8210ea37d11058f",
+  "position": {
+    "x": 100,
+    "y": 300,
+    "z": 2000,
+    "height": 730,
+    "width": 1580,
+    "tabOrder": 2000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "SnapshotComparisonTable"
+                    }
+                  },
+                  "Property": "municipality"
+                }
+              },
+              "queryRef": "SnapshotComparisonTable.municipality",
+              "nativeQueryRef": "municipality",
+              "displayName": "Municipality"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "SnapshotComparisonTable"
+                    }
+                  },
+                  "Property": "membership_status"
+                }
+              },
+              "queryRef": "SnapshotComparisonTable.membership_status",
+              "nativeQueryRef": "membership_status",
+              "displayName": "Status"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "SnapshotComparisonTable"
+                    }
+                  },
+                  "Property": "previous_rank"
+                }
+              },
+              "queryRef": "SnapshotComparisonTable.previous_rank",
+              "nativeQueryRef": "previous_rank",
+              "displayName": "Previous rank"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "SnapshotComparisonTable"
+                    }
+                  },
+                  "Property": "current_rank"
+                }
+              },
+              "queryRef": "SnapshotComparisonTable.current_rank",
+              "nativeQueryRef": "current_rank",
+              "displayName": "Current rank"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "SnapshotComparisonTable"
+                    }
+                  },
+                  "Property": "rank_change"
+                }
+              },
+              "queryRef": "SnapshotComparisonTable.rank_change",
+              "nativeQueryRef": "rank_change",
+              "displayName": "Rank Δ"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "SnapshotComparisonTable"
+                    }
+                  },
+                  "Property": "previous_decision_score"
+                }
+              },
+              "queryRef": "SnapshotComparisonTable.previous_decision_score",
+              "nativeQueryRef": "previous_decision_score",
+              "displayName": "Previous score"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "SnapshotComparisonTable"
+                    }
+                  },
+                  "Property": "current_decision_score"
+                }
+              },
+              "queryRef": "SnapshotComparisonTable.current_decision_score",
+              "nativeQueryRef": "current_decision_score",
+              "displayName": "Current score"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "SnapshotComparisonTable"
+                    }
+                  },
+                  "Property": "decision_score_change"
+                }
+              },
+              "queryRef": "SnapshotComparisonTable.decision_score_change",
+              "nativeQueryRef": "decision_score_change",
+              "displayName": "Score Δ"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "SnapshotComparisonTable"
+                    }
+                  },
+                  "Property": "ev_registrations_12m_change"
+                }
+              },
+              "queryRef": "SnapshotComparisonTable.ev_registrations_12m_change",
+              "nativeQueryRef": "ev_registrations_12m_change",
+              "displayName": "EV registrations Δ"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "SnapshotComparisonTable"
+                    }
+                  },
+                  "Property": "growth_change"
+                }
+              },
+              "queryRef": "SnapshotComparisonTable.growth_change",
+              "nativeQueryRef": "growth_change",
+              "displayName": "Growth Δ"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "SnapshotComparisonTable"
+                    }
+                  },
+                  "Property": "electricity_price_change"
+                }
+              },
+              "queryRef": "SnapshotComparisonTable.electricity_price_change",
+              "nativeQueryRef": "electricity_price_change",
+              "displayName": "Price Δ"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "columnHeaders": [
+        {
+          "properties": {
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#F7F2E8'"
+                    }
+                  }
+                }
+              }
+            },
+            "autoSizeColumnWidth": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "columnAdjustment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'growToFit'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "grid": [
+        {
+          "properties": {
+            "rowPadding": {
+              "expr": {
+                "Literal": {
+                  "Value": "9.0D"
+                }
+              }
+            },
+            "outlineColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#3D5167'"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "values": [
+        {
+          "properties": {
+            "fontColorPrimary": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#E9EEF2'"
+                    }
+                  }
+                }
+              }
+            },
+            "fontColorSecondary": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#B5C2CC'"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "total": [
+        {
+          "properties": {
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#F5C454'"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Snapshot comparison'"
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#F7F2E8'"
+                    }
+                  }
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "22.0D"
+                }
+              }
+            },
+            "fontFamily": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Segoe UI Semibold'"
+                }
+              }
+            },
+            "bold": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'left'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "subTitle": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Previous → current rank, score, EV volume, growth and electricity-price changes'"
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#BCCAD4'"
+                    }
+                  }
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "11.0D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "visualHeader": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}
